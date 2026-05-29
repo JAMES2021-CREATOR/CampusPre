@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus</title>
+    <link rel="stylesheet" href="./output.css">
+    <script>
+  tailwind.config = {
+    darkMode: 'class',
+  }
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900  dark:text-gray-100 transition-colors duration-300">
+
+   <!-- Navbar -->
+  <nav class="bg-blue-900 text-white ">
+   
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="w-40  "><img src ="/public/image/logo.png" alt=""></h1> 
+      
+
+      <!-- Desktop Menu --> 
+      <div class="hidden md:flex space-x-6  ">
+        <a href="#" class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition  hover:p-1 hover:rounded-full">Home</a>
+        <a href="course.html" class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition  hover:p-1 rounded-full">Courses</a>
+        <a href="/public/cbt.html" class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition  hover:p-1 rounded-full">CBT Practice</a>
+        <a href="/public/login.html" class="hover:text-yellow-400 border-transparent border hover:border-yellow-400 transition  hover:p-1 rounded-full">Login</a>
+        <a href="/public/sign up.html" class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300">
+          Sign Up
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        ☰
+      </button>
+    </div> 
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3">
+      <a href="/public/home.html" class="block hover:text-yellow-400">Home</a>
+      <a href="/public/course.html" class="block hover:text-yellow-400">Courses</a>
+      <a href="/public/cbt.html" class="block hover:text-yellow-400">CBT Practice</a>
+      <a href="/public/login.html" class="block hover:text-yellow-400">Login</a>
+      <a href="/public/sign up.html" class="block bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-semibold text-center">
+        Sign Up
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class=" bg-center bg-blend-normal bg-gray-400  "
+  style="background-image: url(./image/image.png) ;">
+    <div class="max-w-7xl mx-auto px-6 py-20 text-center md:text-left md:flex md:items-center md:justify-between ">
+
+      <div class="md:w-1/2 ">
+        <h2 class="text-5xl md:text-6xl md:w-[1000PX] text-white ">
+          Prepare Smarter Pass Confidently.
+        </h2>
+        <p class="mt-6 text-lg text-white font-light">
+          Access past questions, CBT practice tests, and model answers — all in one platform.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="#" class="bg-yellow-400 text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 text-center">
+            Get Started
+          </a>
+          <a href="#" class="border border-blue-700 px-6 py-3 rounded-lg hover:bg-white hover:text-blue-900 text-center">
+            Browse Courses
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden md:block md:w-1/2">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-blue-900">Why Choose CampusPrep?</h3>
+      <p class="text-gray-600 mt-4">Everything you need to succeed in one place.</p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3">
+
+      <!-- Card 1 -->
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition border hover:border-yellow-400">
+        <div class="text-4xl mb-4">📥</div>
+        <h4 class="text-xl font-semibold mb-2">Download Past Questions</h4>
+        <p class="text-gray-600">
+          Get verified past questions organized by department and level.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition border hover:border-yellow-400">
+        <div class="text-4xl mb-4">🖥</div>
+        <h4 class="text-xl font-semibold mb-2">Practice CBT Exams</h4>
+        <p class="text-gray-600">
+          Simulate real exam conditions with timed CBT practice tests.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition border hover:border-yellow-400">
+        <div class="text-4xl mb-4">📘</div>
+        <h4 class="text-xl font-semibold mb-2">Access Model Answers</h4>
+        <p class="text-gray-600">
+          Study detailed explanations and improve your understanding.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-blue-900 text-white text-center py-16 px-6">
+    <h3 class="text-3xl font-bold">Start Preparing Today</h3>
+    <p class="mt-4 text-blue-100">
+      Join thousands of students improving their exam performance.
+    </p>
+    <a href="/public/sign up.html" class="mt-8 inline-block bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300">
+      Create Free Account
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center py-6 text-gray-600">
+    © 2026 CampusPrep. All rights reserved.
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+  <script>
+  const toggleBtn = document.getElementById("themeToggle");
+  const toggleCircle = document.getElementById("toggleCircle");
+
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+    toggleCircle.classList.add("translate-x-7");
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark");
+
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggleCircle.classList.add("translate-x-7");
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleCircle.classList.remove("translate-x-7");
+    }
+  });
+</script>
+
+</body>
+</html>

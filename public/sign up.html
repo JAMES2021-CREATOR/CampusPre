@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/output.css">
+</head>
+<body>
+    <body class="bg-gray-100 min-h-screen">
+
+  <!-- ================= HEADER NAV ================= -->
+  <header class="bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="w-40 "><img src ="/public/image/logo.png" alt=""></h1>
+      
+      <nav class="hidden md:flex space-x-6">
+        <a href="/public/home.html" class="hover:text-yellow-300 transition">Home</a>
+        <a href="/public/course.html" class="hover:text-yellow-300 transition">Courses</a>
+        <a href="/public/course.html" class="hover:text-yellow-300 transition">CBT Practice</a>
+        <a href="/public/login.html" class="hover:text-yellow-300 transition">Login</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden">
+        ☰
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 space-y-2">
+      <a href="/public/home.html" class="block">Home</a>
+      <a href="/public/course.html" class="block">Courses</a>
+      <a href="/public/cbt.html" class="block">CBT Practice</a>
+      <a href="/public/login.html" class="block">Login</a>
+    </div>
+  </header>
+
+
+  <!-- ================= AUTH SECTION ================= -->
+  <div class="flex items-center justify-center py-12 px-4">
+
+    <div class="w-full max-w-6xl bg-white rounded-2xl shadow-xl grid md:grid-cols-2 overflow-hidden">
+
+      <!-- LEFT SIDE -->
+     <div class="hidden md:flex flex-col justify-center items-center  text-white p-12  relative h-screen bg-cover bg-center  "
+         style="background-image: url(/public/image/image.png)">
+        <h2 class="text-4xl font-bold mb-4">Join CampusPrep 🚀</h2>
+        <p class="text-center text-blue-100 mb-6">
+          Practice CBT questions, download materials, track your scores,
+          and improve your academic performance.
+        <ul class="text-sm space-y-2 text-blue-200">
+          <li>✔ Access past questions</li>
+          <li>✔ Real CBT practice environment</li>
+          <li>✔ Performance analytics</li>
+          <li>✔ Download study materials</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT SIDE (Forms) -->
+      <div class="p-8 md:p-12">
+
+        <!-- Tabs -->
+        <div class="flex mb-8 border-b">
+          <button id="loginTab" class="flex-1 py-2 font-semibold border-b-2 border-blue-700 text-blue-900">
+            Login
+          </button>
+          <button id="signupTab" class="flex-1 py-2 font-semibold text-gray-500">
+            Sign Up
+          </button>
+        </div>
+        <!-- LOGIN FORM -->
+        <form id="loginForm" class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium mb-2">Email</label>
+            <input type="email" required
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2">Password</label>
+            <input type="password" required
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <div class="flex justify-between text-sm">
+            <label class="flex items-center space-x-2">
+              <input type="checkbox">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="text-blue-600 hover:underline">Forgot password?</a>
+          </div>
+
+          <button type="submit"
+            class="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition">
+            Login
+          </button>
+
+        </form>
+
+
+        <!-- SIGNUP FORM -->
+        <form id="signupForm" class="space-y-6 hidden">
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Full Name</label>
+            <input type="text" required
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Email Address</label>
+            <input type="email" required
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Password</label>
+            <input type="password" required
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Confirm Password</label>
+            <input type="password" required
+              class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
+          </div>
+
+          <button type="submit"
+            class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition">
+            Create Account
+          </button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    signupTab.addEventListener("click", () => {
+      loginForm.classList.add("hidden");
+      signupForm.classList.remove("hidden");
+      signupTab.classList.add("border-b-2", "border-blue-700", "text-blue-700");
+      loginTab.classList.remove("border-blue-700", "text-blue-700");
+    });
+
+    loginTab.addEventListener("click", () => {
+      signupForm.classList.add("hidden");
+      loginForm.classList.remove("hidden");
+      loginTab.classList.add("border-b-2", "border-blue-700", "text-blue-700");
+      signupTab.classList.remove("border-blue-700", "text-blue-700");
+    });
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Login Successful (Demo)");
+    });
+
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Account Created Successfully (Demo)");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+</head>    
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="w-40 "><img src ="/public/image/logo.png" alt=""></h1>
+      <div class="hidden md:flex space-x-6">
+        <a href="./home.html" class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition  hover:p-1 hover:rounded-full">Home</a>
+        <a href="./course.html" class="hover:text-yellow-400  border border-transparent hover:border-yellow-400 transition  hover:p-1 hover:rounded-full">Courses</a>
+        <a href="/public/cbt.html" class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition  hover:p-1 hover:rounded-full">CBT Practice</a>
+        <a href="/public/login.html" class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition  hover:p-1 hover:rounded-full">Login</a>
+      </div>
+      <button id="menu-btn" class="md:hidden">☰</button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3">
+      <a href="/public/home.html" class="block">Home</a>
+      <a href="/public/course.html" class="block font-semibold text-yellow-400">Courses</a>
+      <a href="/public/cbt.html" class="block">CBT Practice</a>
+      <a href="/public/login.html" class="block">Login</a>
+    </div>
+  </nav>
+
+  <!-- Page Layout -->
+  <div class="max-w-7xl mx-auto px-6 py-10">
+
+    <div class="flex flex-col md:flex-row gap-8">
+
+      <!-- Sidebar -->
+      <aside class="md:w-1/4 bg-white p-6 rounded-xl shadow-md h-fit">
+
+        <h2 class="text-xl font-bold mb-6 text-blue-900">Filters</h2>
+
+        <!-- Department -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Department</h3>
+          <select class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <option>All Departments</option>
+            <option>Biology</option>
+            <option>Zoology</option>
+            <option>Microbiology</option>
+          </select>
+        </div>
+
+        <!-- Level -->
+        <div class="mb-6">
+          <h3 class="font-semibold mb-2">Level</h3>
+          <select class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <option>All Levels</option>
+            <option>100 Level</option>
+            <option>200 Level</option>
+            <option>300 Level</option>
+            <option>400 Level</option>
+          </select>
+        </div>
+
+        <!-- Semester -->
+        <div>
+          <h3 class="font-semibold mb-2">Semester</h3>
+          <select class="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
+            <option>All</option>
+            <option>First Semester</option>
+            <option>Second Semester</option>
+          </select>
+        </div>
+
+      </aside>
+
+      <!-- Main Content -->
+      <main class="md:w-3/4">
+
+        <!-- Search -->
+        <div class="mb-8">
+          <input type="text"
+            placeholder="Search course code or title..."
+            class="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 shadow-sm">
+        </div>
+
+        <!-- Course Grid -->
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          <!-- Course Card -->
+          <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <h3 class="text-lg font-bold text-blue-900">PLB 413</h3>
+            <p class="text-gray-600 mt-2">Applied Ecology</p>
+            <p class="text-sm text-gray-500 mt-1">400 Level • First Semester</p>
+
+            <div class="mt-6 flex justify-between items-center">
+              <a href="#" class="text-blue-700 font-semibold hover:underline">
+                View Materials
+              </a>
+              <span class="text-green-600 text-sm font-medium">
+                12 Files
+              </span>
+            </div>
+          </div>
+
+          <!-- Course Card -->
+          <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <h3 class="text-lg font-bold text-blue-900">ZLY 403</h3>
+            <p class="text-gray-600 mt-2">Entomology</p>
+            <p class="text-sm text-gray-500 mt-1">400 Level • Second Semester</p>
+
+            <div class="mt-6 flex justify-between items-center">
+              <a href="#" class="text-blue-700 font-semibold hover:underline">
+                View Materials
+              </a>
+              <span class="text-green-600 text-sm font-medium">
+                8 Files
+              </span>
+            </div>
+          </div>
+
+          <!-- Course Card -->
+          <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <h3 class="text-lg font-bold text-blue-900">BCH 307</h3>
+            <p class="text-gray-600 mt-2">Biochemistry</p>
+            <p class="text-sm text-gray-500 mt-1">300 Level • First Semester</p>
+
+            <div class="mt-6 flex justify-between items-center">
+              <a href="#" class="text-blue-700 font-semibold hover:underline">
+                View Materials
+              </a>
+              <span class="text-green-600 text-sm font-medium">
+                15 Files
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center py-6 text-gray-600 mt-10">
+    © 2026 CampusPrep. All rights reserved.
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+
+</body>
+</html>

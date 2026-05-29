@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusPrep</title>
+    <link rel="stylesheet" href="./output.css" />
+  </head>
+
+  <body class="bg-gray-100">
+    <nav class="bg-blue-900 text-white">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <h1 class="w-40"><img src="/public/image/logo.png" alt="" /></h1>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-6">
+          <a
+            href="#"
+            class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition hover:p-1 hover:rounded-full"
+            >Home</a
+          >
+          <a
+            href="course.html"
+            class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition hover:p-1 rounded-full"
+            >Courses</a
+          >
+          <a
+            href="/public/cbt.html"
+            class="hover:text-yellow-400 border border-transparent hover:border-yellow-400 transition hover:p-1 rounded-full"
+            >CBT Practice</a
+          >
+          <a
+            href="/public/login.html"
+            class="hover:text-yellow-400 border-transparent border hover:border-yellow-400 transition hover:p-1 rounded-full"
+            >Login</a
+          >
+          <a
+            href="/public/sign up.html"
+            class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-semibold hover:bg-yellow-300"
+          >
+            Sign Up
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden focus:outline-none">☰</button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-3">
+        <a href="/public/home.html" class="block hover:text-yellow-400">Home</a>
+        <a href="/public/course.html" class="block hover:text-yellow-400"
+          >Courses</a
+        >
+        <a href="/public/cbt.html" class="block hover:text-yellow-400"
+          >CBT Practice</a
+        >
+        <a href="/public/login.html" class="block hover:text-yellow-400"
+          >Login</a
+        >
+        <a
+          href="/public/sign up.html"
+          class="block bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-semibold text-center"
+        >
+          Sign Up
+        </a>
+      </div>
+    </nav>
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white flex justify-between">
+      <!-- <h1 class="font-bold text-lg">CampusPrep CBT</h1> -->
+      <div
+        id="timer"
+        class="bg-red-500 px-4 py-1 rounded-lg font-semibold border"
+      >
+        05:00
+      </div>
+    </nav>
+
+    <!-- Quiz Container -->
+    <div class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-xl shadow-md">
+      <h2 id="question-number" class="text-sm text-gray-500 mb-2"></h2>
+
+      <h3 id="question" class="text-xl font-semibold mb-6"></h3>
+
+      <div id="options" class="space-y-4"></div>
+
+      <div class="mt-8 flex justify-between">
+        <button
+          id="next-btn"
+          class="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800"
+        >
+          Next
+        </button>
+        <button
+          id="submit-btn"
+          class="hidden bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-500"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div
+      id="result-modal"
+      class="hidden fixed inset-0 bg-black bg-opacity-50 items-center justify-center"
+    >
+      <div class="bg-white p-8 rounded-xl text-center w-96">
+        <h2 class="text-2xl font-bold mb-4">Exam Completed 🎉</h2>
+        <p id="score-text" class="text-lg mb-6"></p>
+        <button
+          onclick="location.reload()"
+          class="bg-blue-900 text-white px-6 py-2 rounded-lg"
+        >
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const questions = [
+        {
+          question: "What is desertification?",
+          options: [
+            "Conversion of fertile land into desert",
+            "Formation of forest",
+            "Water pollution",
+            "Urban development",
+          ],
+          answer: 0,
+        },
+        {
+          question: "Which insect transmits malaria?",
+          options: ["Housefly", "Anopheles mosquito", "Cockroach", "Bedbug"],
+          answer: 1,
+        },
+        {
+          question: "What is ecology?",
+          options: [
+            "Study of rocks",
+            "Study of insects",
+            "Study of organisms and environment",
+            "Study of machines",
+          ],
+          answer: 2,
+        },
+      ];
+
+      let currentQuestion = 0;
+      let score = 0;
+      let selectedAnswer = null;
+
+      const questionEl = document.getElementById("question");
+      const optionsEl = document.getElementById("options");
+      const nextBtn = document.getElementById("next-btn");
+      const submitBtn = document.getElementById("submit-btn");
+      const questionNumber = document.getElementById("question-number");
+
+      function loadQuestion() {
+        const q = questions[currentQuestion];
+        questionNumber.textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+        questionEl.textContent = q.question;
+        optionsEl.innerHTML = "";
+
+        q.options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.className =
+            "w-full border p-3 rounded-lg text-left hover:bg-blue-50";
+          button.onclick = () => selectAnswer(index);
+          optionsEl.appendChild(button);
+        });
+
+        selectedAnswer = null;
+      }
+
+      function selectAnswer(index) {
+        selectedAnswer = index;
+        [...optionsEl.children].forEach((btn) =>
+          btn.classList.remove("bg-blue-100"),
+        );
+        optionsEl.children[index].classList.add("bg-blue-100");
+      }
+
+      nextBtn.addEventListener("click", () => {
+        if (selectedAnswer === null) return alert("Please select an answer");
+
+        if (selectedAnswer === questions[currentQuestion].answer) {
+          score++;
+        }
+
+        currentQuestion++;
+
+        if (currentQuestion < questions.length) {
+          loadQuestion();
+        } else {
+          nextBtn.classList.add("hidden");
+          submitBtn.classList.remove("hidden");
+        }
+      });
+
+      submitBtn.addEventListener("click", () => {
+        document.getElementById("result-modal").classList.remove("hidden");
+        document.getElementById("score-text").textContent =
+          `You scored ${score} out of ${questions.length}`;
+      });
+
+      loadQuestion();
+
+      // TIMER FUNCTION
+      let timeLeft = 300; // 5 minutes
+      const timerEl = document.getElementById("timer");
+
+      const countdown = setInterval(() => {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+
+        timerEl.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+        timeLeft--;
+
+        if (timeLeft < 0) {
+          clearInterval(countdown);
+          document.getElementById("result-modal").classList.remove("hidden");
+          document.getElementById("score-text").textContent =
+            `Time up! You scored ${score} out of ${questions.length}`;
+        }
+      }, 1000);
+
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    </script>
+    <script>
+      const toggleBtn = document.getElementById("themeToggle");
+      const toggleCircle = document.getElementById("toggleCircle");
+
+      // Load saved theme
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+        toggleCircle.classList.add("translate-x-7");
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+          toggleCircle.classList.add("translate-x-7");
+        } else {
+          localStorage.setItem("theme", "light");
+          toggleCircle.classList.remove("translate-x-7");
+        }
+      });
+    </script>
+  </body>
+</html>
